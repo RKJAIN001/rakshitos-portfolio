@@ -1,0 +1,45 @@
+.windows-layer{ position: absolute; inset: 0; z-index: 50; pointer-events: none; }
+
+.win{
+  position: absolute; min-width: 340px; min-height: 220px;
+  background: var(--glass-bg); backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border); border-radius: var(--radius-window);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  display: flex; flex-direction: column; overflow: hidden; pointer-events: auto;
+  animation: winOpen .18s cubic-bezier(.2,.8,.3,1.2);
+}
+@keyframes winOpen{ from{ transform: scale(.92); opacity: 0; } to{ transform: scale(1); opacity: 1; } }
+.win.minimized{ display: none; }
+.win.maximized{ border-radius: 0; }
+
+.win-titlebar{
+  height: 38px; flex: 0 0 auto; cursor: move; user-select: none;
+  display: flex; align-items: center; padding: 0 12px;
+  background: rgba(255,255,255,0.5); border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.traffic-lights{ display: flex; gap: 8px; margin-right: 12px; }
+.tl-btn{
+  width: 12px; height: 12px; border-radius: 50%; border: none; position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.tl-btn.red{ background: #FF5F57; }
+.tl-btn.yellow{ background: #FEBC2E; }
+.tl-btn.green{ background: #28C840; }
+.tl-btn svg{ width: 7px; height: 7px; }
+
+.win-title{
+  flex: 1; text-align: center; font-size: 13px; font-weight: 600; color: var(--ink);
+  margin-right: 44px; /* balance traffic lights so title is visually centered */
+}
+
+.win-body{ padding: 22px; overflow-y: auto; flex: 1 1 auto; background: rgba(255,255,255,0.35); }
+
+.win-resize-handle{
+  position: absolute; right: 2px; bottom: 2px; width: 16px; height: 16px; cursor: nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.15) 50%); border-radius: 2px;
+}
+
+@media (max-width: 720px){
+  .win{ left: 3vw !important; top: calc(var(--menubar-h) + 10px) !important; width: 94vw !important; height: 64vh !important; }
+  .win-resize-handle{ display: none; }
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rakshitOS — Rakshit Jain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/menubar.css">
+<link rel="stylesheet" href="css/dock.css">
+<link rel="stylesheet" href="css/windows.css">
+<link rel="stylesheet" href="css/apps.css">
+<link rel="stylesheet" href="css/widgets.css">
+</head>
+<body>
+
+<!-- BOOT SCREEN -->
+<div id="boot" class="boot">
+  <div class="boot-logo">RJ</div>
+  <div class="boot-bar"><div class="boot-bar-fill"></div></div>
+  <div class="boot-text mono">starting rakshitOS…</div>
+</div>
+
+<!-- DESKTOP -->
+<div id="desktop" class="desktop" hidden>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- MENU BAR -->
+  <div class="menubar">
+    <div class="menubar-left">
+      <span class="menubar-logo">RJ</span>
+      <span class="menubar-app-name" id="menubar-app-name">Finder</span>
+
+      <div class="menubar-menu">
+        <button type="button">File</button>
+        <div class="menubar-dropdown" hidden>
+          <button data-menu-action="close">Close Window</button>
+        </div>
+      </div>
+      <div class="menubar-menu">
+        <button type="button">Window</button>
+        <div class="menubar-dropdown" hidden>
+          <button data-menu-action="minimize">Minimize</button>
+          <button data-menu-action="zoom">Zoom</button>
+        </div>
+      </div>
+    </div>
+    <div class="menubar-right">
+      <span class="menubar-clock" id="menubar-clock">--:--</span>
+    </div>
+  </div>
+
+  <div class="windows-layer" id="windows-layer"></div>
+
+  <div class="photo-widget" id="photo-widget">
+    <img src="img/profile.png" alt="Rakshit Jain">
+  </div>
+
+  <div class="desktop-widgets" id="desktop-widgets">
+    <div class="widget clock-widget">
+      <div class="widget-time" id="widget-time">--:--</div>
+      <div class="widget-date" id="widget-date">—</div>
+    </div>
+  </div>
+
+  <!-- DOCK -->
+  <div class="dock-wrap">
+    <div class="dock" id="dock">
+      <button class="dock-item" data-window="about">
+        <span class="dock-icon" style="background: linear-gradient(135deg,#FF6B55,#FF8C6B);">RJ</span>
+        <span class="dock-tooltip">About</span>
+        <span class="dock-indicator"></span>
+      </button>
+      <button class="dock-item" data-window="experience">
+        <span class="dock-icon" style="background: linear-gradient(135deg,#14A897,#2ED1BC);">EX</span>
+        <span class="dock-tooltip">Experience</span>
+        <span class="dock-indicator"></span>
+      </button>
+      <button class="dock-item" data-window="projects">
+        <span class="dock-icon" style="background: linear-gradient(135deg,#7A5CFA,#A48CFF);">PJ</span>
+        <span class="dock-tooltip">Projects</span>
+        <span class="dock-indicator"></span>
+      </button>
+      <button class="dock-item" data-window="skills">
+        <span class="dock-icon" style="background: linear-gradient(135deg,#FFC64B,#FFD97A); color:#1B2340;">SK</span>
+        <span class="dock-tooltip">Skills</span>
+        <span class="dock-indicator"></span>
+      </button>
+      <button class="dock-item" data-window="education">
+        <span class="dock-icon" style="background: linear-gradient(135deg,#1B2340,#3A4470);">ED</span>
+        <span class="dock-tooltip">Education</span>
+        <span class="dock-indicator"></span>
+      </button>
+      <div class="dock-sep"></div>
+      <button class="dock-item" data-window="contact">
+        <span class="dock-icon" style="background: linear-gradient(135deg,#FF6B55,#FF8C6B);">✉</span>
+        <span class="dock-tooltip">Contact</span>
+        <span class="dock-indicator"></span>
+      </button>
+      <button class="dock-item" data-window="terminal">
+        <span class="dock-icon mono" style="background: linear-gradient(135deg,#0E1830,#2A3358);">&gt;_</span>
+        <span class="dock-tooltip">Terminal</span>
+        <span class="dock-indicator"></span>
+      </button>
+      <button class="dock-item" data-window="monitor">
+        <span class="dock-icon" style="background: linear-gradient(135deg,#14A897,#2ED1BC);">◔</span>
+        <span class="dock-tooltip">Monitor</span>
+        <span class="dock-indicator"></span>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- WINDOW CONTENT TEMPLATES -->
+<template id="tpl-about">
+  <div class="win-body about-body">
+    <div class="about-hero">
+      <h2 id="about-name">—</h2>
+      <p id="about-tagline" class="mono"></p>
+    </div>
+    <p id="about-summary" class="about-summary"></p>
+    <div class="about-stats" id="about-stats"></div>
+  </div>
+</template>
+
+<template id="tpl-experience">
+  <div class="win-body"><div class="timeline" id="experience-list"></div></div>
+</template>
+
+<template id="tpl-projects">
+  <div class="win-body"><div class="proj-grid" id="projects-list"></div></div>
+</template>
+
+<template id="tpl-skills">
+  <div class="win-body"><div class="skill-groups" id="skills-list"></div></div>
+</template>
+
+<template id="tpl-education">
+  <div class="win-body">
+    <div class="edu-list" id="education-list"></div>
+    <div class="edu-leadership" id="leadership-block"></div>
+    <h3 class="mono section-h">Achievements</h3>
+    <ul class="achieve-list" id="achievements-list"></ul>
+  </div>
+</template>
+
+<template id="tpl-contact">
+  <div class="win-body">
+    <p class="contact-lede">Message goes straight into the backend — stored in SQLite, no third-party form service.</p>
+    <form id="contact-form" class="contact-form">
+      <label>Name<input required type="text" name="name"></label>
+      <label>Email<input required type="email" name="email"></label>
+      <label>Message<textarea required name="message" rows="4"></textarea></label>
+      <button type="submit" class="btn-solid">Send message</button>
+      <div class="contact-status" id="contact-status"></div>
+    </form>
+    <div class="contact-direct" id="contact-direct"></div>
+  </div>
+</template>
+
+<template id="tpl-terminal">
+  <div class="win-body term-body">
+    <div class="term-output" id="term-output">rakshitOS terminal — type 'help' to get started.\n</div>
+    <div class="term-input-row">
+      <span class="mono term-prompt">rakshit@portfolio:~$</span>
+      <input class="mono term-input" id="term-input" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+</template>
+
+<template id="tpl-monitor">
+  <div class="win-body monitor-body">
+    <div class="mon-row"><span>Visits this session</span><strong id="mon-visits" class="mono">—</strong></div>
+    <div class="mon-row"><span>Messages received</span><strong id="mon-messages" class="mono">—</strong></div>
+    <div class="mon-row"><span>Backend uptime</span><strong id="mon-uptime" class="mono">—</strong></div>
+    <div class="mon-row"><span>Server time (UTC)</span><strong id="mon-time" class="mono">—</strong></div>
+    <div class="mon-note mono">live data from FastAPI /api/stats</div>
+  </div>
+</template>
+
+<script src="js/api.js"></script>
+<script src="js/windowManager.js"></script>
+<script src="js/dock.js"></script>
+<script src="js/menubar.js"></script>
+<script src="js/widgets.js"></script>
+<script src="js/apps.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

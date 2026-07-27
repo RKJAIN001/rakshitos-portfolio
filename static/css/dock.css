@@ -1,0 +1,44 @@
+.dock-wrap{
+  position: absolute; left: 0; right: 0; bottom: 10px; z-index: 200;
+  display: flex; justify-content: center; pointer-events: none;
+}
+.dock{
+  pointer-events: auto;
+  display: flex; align-items: flex-end; gap: 10px;
+  background: var(--dock-bg); backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px; padding: 10px 12px 8px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+.dock-item{
+  position: relative;
+  background: none; border: none; padding: 0;
+  display: flex; flex-direction: column; align-items: center;
+  transition: transform .12s ease;
+  transform-origin: bottom center;
+}
+.dock-icon{
+  width: 48px; height: 48px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.dock-item .dock-tooltip{
+  position: absolute; bottom: 62px; left: 50%; transform: translateX(-50%);
+  background: rgba(20,24,42,0.9); color: #fff; font-size: 11px; font-weight: 600;
+  padding: 4px 9px; border-radius: 6px; white-space: nowrap;
+  opacity: 0; pointer-events: none; transition: opacity .12s ease;
+}
+.dock-item:hover .dock-tooltip{ opacity: 1; }
+.dock-indicator{
+  width: 4px; height: 4px; border-radius: 50%; background: var(--ink); margin-top: 5px;
+  opacity: 0;
+}
+.dock-item.running .dock-indicator{ opacity: 1; }
+.dock-sep{ width: 1px; align-self: stretch; background: rgba(255,255,255,0.35); margin: 4px 2px; }
+
+@media (max-width: 720px){
+  .dock{ gap: 6px; padding: 8px 8px 6px; }
+  .dock-icon{ width: 42px; height: 42px; font-size: 13px; }
+  .dock-item .dock-tooltip{ display: none; }
+}
