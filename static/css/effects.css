@@ -37,3 +37,31 @@
   .electric-glow::after, .proj-card::after{ animation: none; }
   .gradient-text{ animation: none; }
 }
+
+/* Centered desktop tagline — fills the empty middle of the desktop */
+.desktop-tagline{
+  position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%);
+  z-index: 2; pointer-events: none; text-align: center;
+  font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: clamp(26px, 4.5vw, 58px); line-height: 1.3;
+  display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap;
+  opacity: 0;
+  animation: taglineIn 1.2s ease .3s both;
+}
+.tagline-arrow{
+  font-size: 0.7em; color: rgba(255,255,255,0.55);
+  animation: arrowPulse 2.4s ease-in-out infinite;
+}
+@keyframes taglineIn{
+  from{ opacity: 0; transform: translate(-50%, -42%) scale(0.96); }
+  to{ opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes arrowPulse{
+  0%,100%{ opacity: 0.4; transform: translateX(0); }
+  50%{ opacity: 0.9; transform: translateX(6px); }
+}
+@media (prefers-reduced-motion: reduce){
+  .desktop-tagline{ animation: none; opacity: 1; }
+  .tagline-arrow{ animation: none; }
+}
+@media (max-width: 720px){ .desktop-tagline{ display: none; } }
