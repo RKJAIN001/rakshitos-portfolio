@@ -47,3 +47,17 @@
 @media (prefers-reduced-motion: reduce){
   .bolt, .bolt path, .storm-flash{ animation: none; opacity: 0; }
 }
+
+/* Corner artwork — bleeds off the bottom-right edge, background already transparent */
+.corner-art{
+  position: absolute; bottom: -6%; right: -4%; z-index: 2; pointer-events: none;
+  width: min(38vw, 420px); height: auto;
+  opacity: 0.9;
+  animation: cornerArtDrift 10s ease-in-out infinite;
+}
+@keyframes cornerArtDrift{
+  0%,100%{ transform: translate(0,0); }
+  50%{ transform: translate(-6px,-10px); }
+}
+@media (prefers-reduced-motion: reduce){ .corner-art{ animation: none; } }
+@media (max-width: 720px){ .corner-art{ width: 58vw; opacity: 0.55; } }

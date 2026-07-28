@@ -68,15 +68,15 @@ button{ font-family: inherit; cursor: pointer; }
 .desktop{
   position: relative; width: 100vw; height: 100vh; overflow: hidden;
   background:
-    radial-gradient(circle at 15% 20%, rgba(255,59,110,0.22) 0%, transparent 42%),
-    radial-gradient(circle at 82% 15%, rgba(142,92,255,0.28) 0%, transparent 45%),
-    radial-gradient(circle at 50% 100%, rgba(0,232,198,0.18) 0%, transparent 50%),
-    radial-gradient(circle at 90% 85%, rgba(255,224,102,0.10) 0%, transparent 40%),
-    linear-gradient(165deg, #0A0A12 0%, #030305 100%);
+    radial-gradient(circle at 15% 20%, rgba(255,59,110,0.10) 0%, transparent 40%),
+    radial-gradient(circle at 82% 15%, rgba(142,92,255,0.13) 0%, transparent 42%),
+    radial-gradient(circle at 50% 100%, rgba(0,232,198,0.08) 0%, transparent 48%),
+    radial-gradient(circle at 90% 85%, rgba(255,224,102,0.05) 0%, transparent 38%),
+    linear-gradient(165deg, #060608 0%, #000000 100%);
 }
 
 /* ambient drifting light — purely decorative, sits behind everything */
-.orb{ position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.32; pointer-events: none; z-index: 1; }
+.orb{ position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.16; pointer-events: none; z-index: 1; }
 .orb-1{ width: 440px; height: 440px; background: var(--coral); top: -100px; left: -100px; animation: floatA 24s ease-in-out infinite; }
 .orb-2{ width: 380px; height: 380px; background: var(--purple); bottom: -120px; right: -80px; animation: floatB 28s ease-in-out infinite; }
 .orb-3{ width: 340px; height: 340px; background: var(--teal); bottom: 18%; left: 38%; animation: floatC 32s ease-in-out infinite; }
