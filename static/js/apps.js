@@ -20,6 +20,7 @@ RJOS.apps = (() => {
 
     if (id === "about") {
       el.querySelector("#about-name").textContent = profile.name;
+      el.querySelector("#about-name").classList.add("gradient-text");
       el.querySelector("#about-tagline").textContent = `${profile.tagline}  ·  ${profile.location}`;
       el.querySelector("#about-summary").textContent = profile.summary;
       el.querySelector("#about-stats").innerHTML = profile.stats.map(s => `

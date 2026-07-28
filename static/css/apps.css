@@ -1,5 +1,6 @@
 /* ---- about ---- */
 .about-hero h2{ font-size: 24px; }
+.about-hero h2.gradient-text{ background-size: 300% auto; }
 .about-hero p{ color: var(--ink-soft); margin-top: 4px; font-size: 12.5px; }
 .about-summary{ color: var(--ink-soft); line-height: 1.7; font-size: 14px; margin-top: 16px; }
 .about-stats{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }

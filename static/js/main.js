@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   RJOS.menubar.init();
   RJOS.dock.init();
   RJOS.widgets.init();
+  RJOS.particles.init();
 
   const boot = document.getElementById("boot");
   const desktop = document.getElementById("desktop");

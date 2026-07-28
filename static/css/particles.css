@@ -1,0 +1,12 @@
+.particle{
+  position: absolute; border-radius: 50%; pointer-events: none; z-index: 2;
+  filter: blur(0.5px);
+  animation: particleFloat linear infinite;
+}
+@keyframes particleFloat{
+  0%{ transform: translateY(0) translateX(0); opacity: 0; }
+  8%{ opacity: 0.85; }
+  92%{ opacity: 0.5; }
+  100%{ transform: translateY(-115vh) translateX(20px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce){ .particle{ display: none; } }

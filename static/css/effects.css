@@ -1,0 +1,39 @@
+/* Reusable neon-glow halo — bleeds a shifting gradient light behind an element's edges */
+.electric-glow{ position: relative; }
+.electric-glow::after{
+  content: ""; position: absolute; inset: -3px; border-radius: inherit; z-index: -1;
+  background: linear-gradient(120deg, var(--coral), var(--purple), var(--teal), var(--yellow), var(--coral));
+  background-size: 300% 300%;
+  filter: blur(8px); opacity: 0.6;
+  animation: electricShift 6s ease infinite;
+}
+@keyframes electricShift{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+/* Slightly stronger + faster halo for elements meant to pop (project cards on hover) */
+.proj-card{ position: relative; z-index: 0; }
+.proj-card::after{
+  content: ""; position: absolute; inset: -2px; border-radius: 10px; z-index: -1;
+  background: linear-gradient(120deg, var(--coral), var(--purple), var(--teal));
+  background-size: 300% 300%;
+  filter: blur(10px); opacity: 0; transition: opacity .3s ease;
+  animation: electricShift 5s ease infinite;
+}
+.proj-card:hover::after{ opacity: 0.65; }
+
+/* Gradient-animated text, used for the name in About and any other headline accent */
+.gradient-text{
+  background: linear-gradient(90deg, var(--coral), var(--purple), var(--teal), var(--coral));
+  background-size: 300% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: gradientMove 6s linear infinite;
+}
+@keyframes gradientMove{ to{ background-position: 300% center; } }
+
+@media (prefers-reduced-motion: reduce){
+  .electric-glow::after, .proj-card::after{ animation: none; }
+  .gradient-text{ animation: none; }
+}
