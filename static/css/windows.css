@@ -15,7 +15,7 @@
 .win-titlebar{
   height: 38px; flex: 0 0 auto; cursor: move; user-select: none;
   display: flex; align-items: center; padding: 0 12px;
-  background: rgba(255,255,255,0.5); border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .traffic-lights{ display: flex; gap: 8px; margin-right: 12px; }
 .tl-btn{
@@ -32,11 +32,11 @@
   margin-right: 44px; /* balance traffic lights so title is visually centered */
 }
 
-.win-body{ padding: 22px; overflow-y: auto; flex: 1 1 auto; background: rgba(255,255,255,0.35); }
+.win-body{ padding: 22px; overflow-y: auto; flex: 1 1 auto; background: rgba(255,255,255,0.03); }
 
 .win-resize-handle{
   position: absolute; right: 2px; bottom: 2px; width: 16px; height: 16px; cursor: nwse-resize;
-  background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.15) 50%); border-radius: 2px;
+  background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.22) 50%); border-radius: 2px;
 }
 
 @media (max-width: 720px){

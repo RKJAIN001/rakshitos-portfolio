@@ -1,0 +1,49 @@
+/* Lightning layer — a handful of jagged bolts that strike on a loop, plus a
+   subtle full-screen flash timed to sell the "storm" effect. Purely decorative,
+   sits above the wallpaper orbs but below all windows/UI. */
+
+.lightning-layer{ position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+
+.bolt{ position: absolute; opacity: 0; filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 16px currentColor); }
+.bolt path{
+  fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 400; stroke-dashoffset: 400;
+}
+
+.bolt-1{ top: -4%; left: 12%; width: 140px; color: #CFE8FF; animation: boltStrike 7.5s ease-in infinite; animation-delay: 0.2s; }
+.bolt-2{ top: -4%; left: 68%; width: 110px; color: var(--purple); animation: boltStrike 9s ease-in infinite; animation-delay: 3.4s; }
+.bolt-3{ top: -4%; left: 40%; width: 90px; color: var(--teal); animation: boltStrike 11s ease-in infinite; animation-delay: 6.1s; }
+
+@keyframes boltStrike{
+  0%{ opacity: 0; }
+  1%{ opacity: 1; }
+  2%{ opacity: 0.2; }
+  3%{ opacity: 1; }
+  5%{ opacity: 0; }
+  100%{ opacity: 0; }
+}
+.bolt-1 path, .bolt-2 path, .bolt-3 path{ animation: boltDraw 7.5s ease-in infinite; }
+.bolt-2 path{ animation-duration: 9s; animation-delay: 3.4s; }
+.bolt-3 path{ animation-duration: 11s; animation-delay: 6.1s; }
+.bolt-1 path{ animation-delay: 0.2s; }
+@keyframes boltDraw{
+  0%{ stroke-dashoffset: 400; }
+  4%{ stroke-dashoffset: 0; }
+  8%{ stroke-dashoffset: 0; }
+  12%{ stroke-dashoffset: -400; }
+  100%{ stroke-dashoffset: -400; }
+}
+
+/* Faint screen-wide flash synced roughly with the bolts for storm ambience */
+.storm-flash{
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, rgba(180,210,255,0.10), transparent 60%);
+  opacity: 0; animation: flashPulse 7.5s ease-in infinite;
+}
+@keyframes flashPulse{
+  0%{ opacity: 0; } 1.5%{ opacity: 1; } 3%{ opacity: 0; } 100%{ opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .bolt, .bolt path, .storm-flash{ animation: none; opacity: 0; }
+}

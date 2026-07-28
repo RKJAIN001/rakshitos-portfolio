@@ -1,17 +1,17 @@
 :root{
-  --ink: #1B2340;
-  --ink-soft: #4A5170;
-  --paper: #FFFFFF;
-  --coral: #FF6B55;
-  --teal: #14A897;
-  --purple: #7A5CFA;
-  --yellow: #FFC64B;
-  --line: #E4D9C0;
+  --ink: #F1F4FF;
+  --ink-soft: #9BA3C7;
+  --paper: #14141F;
+  --coral: #FF3B6E;
+  --teal: #00E8C6;
+  --purple: #8E5CFF;
+  --yellow: #FFE066;
+  --line: rgba(255,255,255,0.14);
 
-  --glass-bg: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.5);
-  --menubar-bg: rgba(20,24,42,0.55);
-  --dock-bg: rgba(255,255,255,0.28);
+  --glass-bg: rgba(16,16,26,0.62);
+  --glass-border: rgba(255,255,255,0.14);
+  --menubar-bg: rgba(4,4,10,0.7);
+  --dock-bg: rgba(10,10,18,0.5);
 
   --menubar-h: 28px;
   --dock-h: 76px;
@@ -30,12 +30,12 @@ h1,h2,h3{ margin: 0; font-weight: 700; letter-spacing: -0.01em; }
 button{ font-family: inherit; cursor: pointer; }
 :focus-visible{ outline: 2px solid var(--purple); outline-offset: 2px; }
 ::-webkit-scrollbar{ width: 8px; height: 8px; }
-::-webkit-scrollbar-thumb{ background: rgba(0,0,0,0.18); border-radius: 8px; }
+::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.18); border-radius: 8px; }
 
 /* ---------------- BOOT ---------------- */
 .boot{
   position: fixed; inset: 0; z-index: 999;
-  background: #0E1830; color: #fff;
+  background: #030305; color: #fff;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
   overflow: hidden;
 }
@@ -68,15 +68,15 @@ button{ font-family: inherit; cursor: pointer; }
 .desktop{
   position: relative; width: 100vw; height: 100vh; overflow: hidden;
   background:
-    radial-gradient(circle at 15% 20%, rgba(255,107,85,0.55) 0%, transparent 42%),
-    radial-gradient(circle at 82% 15%, rgba(122,92,250,0.55) 0%, transparent 45%),
-    radial-gradient(circle at 50% 100%, rgba(20,168,151,0.5) 0%, transparent 50%),
-    radial-gradient(circle at 90% 85%, rgba(255,198,75,0.35) 0%, transparent 40%),
-    linear-gradient(165deg, #1B2340 0%, #0E1830 100%);
+    radial-gradient(circle at 15% 20%, rgba(255,59,110,0.22) 0%, transparent 42%),
+    radial-gradient(circle at 82% 15%, rgba(142,92,255,0.28) 0%, transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(0,232,198,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 90% 85%, rgba(255,224,102,0.10) 0%, transparent 40%),
+    linear-gradient(165deg, #0A0A12 0%, #030305 100%);
 }
 
 /* ambient drifting light — purely decorative, sits behind everything */
-.orb{ position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5; pointer-events: none; z-index: 1; }
+.orb{ position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.32; pointer-events: none; z-index: 1; }
 .orb-1{ width: 440px; height: 440px; background: var(--coral); top: -100px; left: -100px; animation: floatA 24s ease-in-out infinite; }
 .orb-2{ width: 380px; height: 380px; background: var(--purple); bottom: -120px; right: -80px; animation: floatB 28s ease-in-out infinite; }
 .orb-3{ width: 340px; height: 340px; background: var(--teal); bottom: 18%; left: 38%; animation: floatC 32s ease-in-out infinite; }
