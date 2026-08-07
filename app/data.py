@@ -114,6 +114,7 @@ ACHIEVEMENTS = [
     "Samsung Innovation Campus (SIC) — AI & ML certification",
     "Internshala — Data Science Training Certification",
     "LeetCode SQL 50 badge — 50+ problems across joins, subqueries & aggregate functions",
+    "HackerRank ADVANCED SQL CERTIFICATE",
 ]
 
 LEADERSHIP = {
